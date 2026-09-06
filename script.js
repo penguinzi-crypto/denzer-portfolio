@@ -85,7 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const html = document.documentElement;
     
     // Check saved theme
-    const savedTheme = localStorage.getItem('theme') || 'light';
+    const savedTheme = localStorage.getItem('theme') || 'dark';
     html.setAttribute('data-theme', savedTheme);
 
     themeToggle.addEventListener('click', () => {
@@ -489,9 +489,15 @@ document.addEventListener('DOMContentLoaded', () => {
             maxSize: 2.2,
         };
 
+        function getCurrentTheme() {
+            return document.documentElement.getAttribute('data-theme') || 'dark';
+        }
+
         // Current interpolated palette (for smooth transitions)
-        let currentPalette = { ...lightPalette };
-        let targetPalette = lightPalette;
+        const initialTheme = getCurrentTheme();
+        const initialPalette = initialTheme === 'dark' ? darkPalette : lightPalette;
+        let currentPalette = { ...initialPalette };
+        let targetPalette = initialPalette;
         let transitionProgress = 1;
 
         function lerp(a, b, t) {
@@ -500,10 +506,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         function lerpColor(a, b, t) {
             return a.map((v, i) => lerp(v, b[i], t));
-        }
-
-        function getCurrentTheme() {
-            return document.documentElement.getAttribute('data-theme') || 'light';
         }
 
         function setTargetPalette() {
