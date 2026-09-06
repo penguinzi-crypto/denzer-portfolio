@@ -1,0 +1,16 @@
+{
+  "name": "denzer-portfolio",
+  "version": "1.0.0",
+  "description": "Denzer Molina — Full Stack Developer & Game Developer Portfolio",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx serve ."
+  },
+  "keywords": [
+    "portfolio",
+    "developer",
+    "supabase"
+  ],
+  "author": "Denzer Molina <denzermmolina@gmail.com>",
+  "license": "MIT"
+}
