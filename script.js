@@ -494,10 +494,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // Current interpolated palette (for smooth transitions)
-        const initialTheme = getCurrentTheme();
-        const initialPalette = initialTheme === 'dark' ? darkPalette : lightPalette;
-        let currentPalette = { ...initialPalette };
-        let targetPalette = initialPalette;
+        let currentPalette = { ...darkPalette };
+        let targetPalette = darkPalette;
         let transitionProgress = 1;
 
         function lerp(a, b, t) {
